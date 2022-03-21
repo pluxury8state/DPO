@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+class threed {
+    
+public:
+    int x, y, z;
+    threed() { x = 10; y = 10; z = 10; }
+    threed(int a, int b, int c) {
+        x = a; y = b; z = c;
+    }
+    friend ostream& operator<<(ostream& stream, threed obj);
+    friend istream& operator>>(istream& stream, threed &obj);
+};
+
+// ввод координат x, y, z - функция ввода для threeD
+istream& operator>>(iostream &stream, threed &obj) {
+    cout << "Введите координаты X, Y, Z : ";
+    stream >> obj.x >> obj.y >> obj.z; //код ввода
+    return stream;
+}
+// вывод координат x, y, z - функция вывода для threed
+ostream& operator<<(ostream& stream, threed obj) {
+    stream << obj.x << ", ";
+    stream << obj.y << ", ";
+    stream << obj.z << "\n";
+    return stream; // возврат потока stream
+}
+
+
+int main()
+{
+   
+    threed a(1, 2, 3);
+
+    cout << a;
+    cin >> a;
+    cout << a;
+
+    return 0;
+}
